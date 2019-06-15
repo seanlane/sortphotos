@@ -8,8 +8,6 @@ Copyright (c) S. Andrew Ning. All rights reserved.
 
 """
 
-from __future__ import print_function
-from __future__ import with_statement
 import subprocess
 import os
 import sys
@@ -27,9 +25,6 @@ import reverse_geocode
 
 # Setting locale to the 'local' value
 locale.setlocale(locale.LC_ALL, '')
-
-exiftool_location = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'Image-ExifTool', 'exiftool')
-
 
 # -------- convenience methods -------------
 
@@ -261,7 +256,7 @@ def get_exif_folder(folder_name):
     for root, subdirs, files in os.walk(folder_name):
         for filename in files:
             file_path = os.path.join(root, filename)
-            tagjson += [get_exif(file_path)]
+            tagjson.append(get_exif(file_path))
 
     return tagjson
 
